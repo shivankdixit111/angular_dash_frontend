@@ -40,7 +40,7 @@ export class LoginComponent {
          },
          error: (err)=> {
             console.log(err)
-            alert(err.error || 'Login Failed. Try again later.')
+            alert('Login Failed. Try again later.')
          }
       })
     }
