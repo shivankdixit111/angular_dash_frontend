@@ -1,3 +1,3 @@
-export const environment = {
-    apiUrl : "http://localhost:3000/api"
+export const environment = { 
+    apiUrl : "https://angular-backend-dashboard.vercel.app/api"
 };
