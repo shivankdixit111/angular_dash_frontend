@@ -38,8 +38,7 @@ export class LoginComponent {
             }
             this.isLoading = false;
          },
-         error: (err)=> { 
-           console.log(err)
+         error: (err)=> {  
             alert(err.error.message)
          }
       })
