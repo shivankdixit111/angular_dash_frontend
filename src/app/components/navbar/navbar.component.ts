@@ -20,8 +20,7 @@ export class NavbarComponent {
 
    ngOnInit() {
        this.authSubscription = this.authService.isLoggedIn$.subscribe({
-          next: (loggedInVal) => {
-            console.log('loggedin val ', loggedInVal)
+          next: (loggedInVal) => { 
             this.isLogIn = loggedInVal
           },
           error: (err) => {

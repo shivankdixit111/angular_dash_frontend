@@ -28,8 +28,7 @@ export class AdminComponent {
     
      this.usersSubscription = this.authService.users$.subscribe({
         next: (users) => {
-          this.Users = users;  
-          console.log('users are ', this.Users) 
+          this.Users = users;   
           if(users.length>0) this.isLoading = false;
         }
      })

@@ -27,8 +27,7 @@ export class SignupComponent {
      const role = this.signUpData.role
 
      this.authService.signUp(fullname, email, password, role).subscribe({
-        next: (response) => {
-           console.log(response)
+        next: (response) => { 
            alert('User Created Successfully')
            this.router.navigate(['/user/login'])
            this.isLoading = false;

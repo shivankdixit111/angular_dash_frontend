@@ -17,11 +17,9 @@ export class ProfileComponent {
    constructor(private authService: AuthService, private http: HttpClient) {}
    ngOnInit() {
       this.http.get(`${environment.apiUrl}/user/getProfile`).subscribe({
-         next: (response)=>{
-            console.log('users are ' , response)
+         next: (response)=>{ 
             this.currentUser = response;
-            this.currentUser = this.currentUser.userData;
-            console.log('userData is - ', this.currentUser)
+            this.currentUser = this.currentUser.userData; 
             this.isLoading = false;
          },
          error: (err)=>{

@@ -24,12 +24,10 @@ export class EditAdminComponent {
     ngOnInit() {
       this.id = this.route.snapshot.paramMap.get('id') || "";
       this.http.get(`${environment.apiUrl}/user/${this.id}`).subscribe({
-         next: (res)=> {
-          console.log('initial user is ', res)  
+         next: (res)=> { 
           this.intialUser = res;
           // this.editUser = this.intialUser
-          this.editUser = this.intialUser.user;
-          console.log('initial user is 2 ', this.intialUser.user) 
+          this.editUser = this.intialUser.user; 
           this.isLoading = false;
          },
          error: (err)=> {

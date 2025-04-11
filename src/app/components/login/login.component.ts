@@ -29,8 +29,7 @@ export class LoginComponent {
            const token = response.token; 
            const User = response.user; 
            localStorage.setItem('token', token)
-           alert('Login Successful')
-           console.log('logged in user is - ', response)
+           alert('Login Successful') 
 
             if(User.role === "Admin") {
               this.router.navigate(['/admin'])
@@ -40,7 +39,7 @@ export class LoginComponent {
             this.isLoading = false;
          },
          error: (err)=> {
-            alert(err.error.message || 'Login Failed. Try again later.')
+            alert(err.error || 'Login Failed. Try again later.')
          }
       })
     }
