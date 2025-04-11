@@ -38,9 +38,8 @@ export class LoginComponent {
             }
             this.isLoading = false;
          },
-         error: (err)=> {
-            console.log(err)
-            alert('Login Failed. Try again later.')
+         error: (err)=> { 
+            alert(err.error.message)
          }
       })
     }
