@@ -1,0 +1,25 @@
+ 
+    <form (submit)="onLogin()" class="auth-container">
+        <h1>Login here: </h1>
+    <div>
+        <label for="email">Email</label>
+        <input 
+            type="text"
+            name="email"
+            placeholder="Enter your email"
+            [(ngModel)]="loginData.email"
+        >
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input 
+            type="text"
+            name="password"
+            placeholder="Enter your password"
+            [(ngModel)]="loginData.password"
+        >
+    </div>
+    <div class="btn-container">
+        <button type="submit" class="btn btn-success">Login</button>
+    </div>
+    </form> 

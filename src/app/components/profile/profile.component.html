@@ -1,0 +1,25 @@
+    
+@if(isLoading) { 
+    <app-loader></app-loader>
+} @else { 
+    <h1>User Dashboard</h1>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>  
+          </tr>
+        </thead>
+        <tbody> 
+          <tr> 
+            <td>{{currentUser.fullname}}</td>
+            <td>{{currentUser.email}}</td>
+            <td>{{currentUser.role}}</td> 
+          </tr> 
+          
+        </tbody>
+      </table>
+}
+
+ 

@@ -1,0 +1,39 @@
+
+    @if(isLoading) {
+        <app-loader></app-loader>
+    } @else {
+       
+        <form (submit)="onEdit()" class="auth-container container">
+            <h1>Edit here: </h1>
+             <div>
+                <label for="fullname">FullName</label>
+                <input 
+                    type="text"
+                    name="fullname"
+                    placeholder="Enter your fullname"
+                    [(ngModel)]="editUser.fullname" 
+                >
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input 
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    [(ngModel)]="editUser.email" 
+                >
+            </div> 
+            <div>
+                <label for="Role">Role</label>
+                <select name="role" id="role" [(ngModel)]="editUser.role" 
+                >
+                    <option value="" selected disabled>Select role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="General User">General User</option>
+                </select>
+            </div>
+            <div class="btn-container">
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        </form>
+    }

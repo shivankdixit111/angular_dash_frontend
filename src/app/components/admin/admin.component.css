@@ -1,0 +1,16 @@
+
+h1{
+    margin: 3rem auto;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 500;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.table{
+  width: 90%;
+  margin-inline: auto;
+}
+
+.btn{
+    width: 100%;
+}
