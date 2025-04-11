@@ -51,9 +51,7 @@ export class AuthService {
 
   fetchAllUsers() {
     return this.http.get(`${environment.apiUrl}/admin/getAllUsers`).pipe(
-      tap((response)=>{
-        console.log('response is pipe ', response)
-        console.log('all users are pipe ', response)  
+      tap((response)=>{ 
         this.currentUsers = response;
         this.currentUsers = this.currentUsers.Users;
         this.usersSubject.next(this.currentUsers);  
@@ -62,8 +60,7 @@ export class AuthService {
   } 
 
   deleteUsers(id: string) {
-    this.currentUsers = this.usersSubject.value; 
-    console.log('current users in delete are ', this.currentUsers)
+    this.currentUsers = this.usersSubject.value;  
     this.currentUsers = this.currentUsers?.filter((user: any) => user._id !== id);
     this.usersSubject.next(this.currentUsers);
 
