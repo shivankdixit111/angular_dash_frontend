@@ -5,6 +5,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { EditAdminComponent } from './components/edit-admin/edit-admin.component';
 import { HomeComponent } from './components/home/home.component';
+import { ErrorComponent } from './components/error/error.component';
 
 export const routes: Routes = [
     {
@@ -24,5 +25,8 @@ export const routes: Routes = [
     }, 
     {
         path: 'admin/updateUser/:id', component: EditAdminComponent
+    },  
+    {
+        path: '**', component: ErrorComponent
     },  
 ];
