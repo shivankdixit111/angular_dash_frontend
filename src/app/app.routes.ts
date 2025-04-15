@@ -6,8 +6,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { EditAdminComponent } from './components/edit-admin/edit-admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
+import { authGuard } from './guards/auth.guard';
 
-export const routes: Routes = [
+export const routes: Routes = [ 
     {
         path: '', component: HomeComponent
     },
@@ -18,13 +19,13 @@ export const routes: Routes = [
         path: 'user/login', component: LoginComponent
     },
     {
-        path: 'user/getProfile', component: ProfileComponent
+        path: 'user/getProfile', component: ProfileComponent, canActivate:[authGuard]
     },
     {
-        path: 'admin', component: AdminComponent
+        path: 'admin', component: AdminComponent, canActivate: [authGuard]
     }, 
     {
-        path: 'admin/updateUser/:id', component: EditAdminComponent
+        path: 'admin/updateUser/:id', component: EditAdminComponent, canActivate: [authGuard]
     },  
     {
         path: '**', component: ErrorComponent
