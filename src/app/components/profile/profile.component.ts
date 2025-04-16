@@ -10,16 +10,18 @@ import { LoaderComponent } from "../loader/loader.component";
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
+
 export class ProfileComponent {
    currentUser: any = {}
    isLoading: boolean = true;
 
-   constructor(private authService: AuthService, private http: HttpClient) {}
+   // constructor-based dependency injection  
+
+   constructor(private authService: AuthService, private http: HttpClient) {}  
    ngOnInit() {
-      this.http.get(`${environment.apiUrl}/user/getProfile`).subscribe({
+      this.authService.getUserProfile().subscribe({
          next: (response)=>{ 
-            this.currentUser = response;
-            this.currentUser = this.currentUser.userData; 
+            this.currentUser = response.user; 
             this.isLoading = false;
          },
          error: (err)=>{

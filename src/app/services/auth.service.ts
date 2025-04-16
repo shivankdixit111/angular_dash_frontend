@@ -17,6 +17,15 @@ interface loginResponse {
   userId: string,
 }
 
+interface User{
+   user: {
+     _id: string,
+     fullname: string,
+     email: string,
+     role: string,
+   }
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +33,7 @@ interface loginResponse {
 
 
 export class AuthService {
+ 
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -39,7 +49,7 @@ export class AuthService {
      return this.http.post(`${environment.apiUrl}/user/signup`, body)
   }
 
-  login( email: string, password: string,) {
+  login( email: string, password: string) {
     const body = { email, password};
     return this.http.post<loginResponse>(`${environment.apiUrl}/user/login`, body).pipe(
       tap((res)=>{
@@ -48,6 +58,15 @@ export class AuthService {
       })
     )
   }
+
+  getUserProfile() {
+    return this.http.get<User>(`${environment.apiUrl}/user/getProfile`);
+  }
+
+  getUserFromId(id: string) {
+    return this.http.get<User>(`${environment.apiUrl}/user/${id}`);
+  }
+
 
   fetchAllUsers() {
     return this.http.get(`${environment.apiUrl}/admin/getAllUsers`).pipe(
@@ -78,6 +97,5 @@ export class AuthService {
 
   getToken() {
     return localStorage.getItem('token')
-  }
- 
+  } 
 }

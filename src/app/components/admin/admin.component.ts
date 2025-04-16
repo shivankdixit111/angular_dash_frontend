@@ -16,6 +16,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 export class AdminComponent {
   Users: any = []
   isLoading: boolean = true;
+  currentUser: any = {};
   
   private usersSubscription!: Subscription;
   
@@ -39,15 +40,24 @@ export class AdminComponent {
     this.usersSubscription.unsubscribe(); //clean up 
   }
  
-  DeleteUser(id: string) { 
+  DeleteUser(id: string) {    
+   this.authService.getUserFromId(id).subscribe({
+    next: (res) => {
+      this.currentUser = res.user; 
+    }
+   });
    
    this.authService.deleteUsers(id).subscribe({
       next: (res)=> {
-        alert('User Deleted successfully')    
+        alert('User Deleted successfully')
+        if(this.currentUser._id === id) {
+          this.router.navigate(['/user/login'])
+        }    
       },
       
       error: (err)=> {
         alert(err.errror.message)
+        this.router.navigate(['/user/login'])
       }
     })
   }

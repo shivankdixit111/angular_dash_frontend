@@ -13,9 +13,9 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './edit-admin.component.html',
   styleUrl: './edit-admin.component.css'
 })
+
 export class EditAdminComponent {
-    editUser : any = {}
-    intialUser: any = {}
+    editUser: any = {}
     id: string = "";
     isLoading: boolean = true;
 
@@ -23,11 +23,9 @@ export class EditAdminComponent {
 
     ngOnInit() {
       this.id = this.route.snapshot.paramMap.get('id') || "";
-      this.http.get(`${environment.apiUrl}/user/${this.id}`).subscribe({
+      this.authService.getUserFromId(this.id).subscribe({
          next: (res)=> { 
-          this.intialUser = res;
-          // this.editUser = this.intialUser
-          this.editUser = this.intialUser.user; 
+          this.editUser = res.user;  
           this.isLoading = false;
          },
          error: (err)=> {
@@ -45,11 +43,16 @@ export class EditAdminComponent {
             next: ((res)=> { 
                alert('User updated successfully')
                this.router.navigate(['/admin'])
-            })
+            }),
+            error: (err) =>{
+              alert(err.error.message)
+              this.router.navigate(['/user/login']) 
+            }
           }) 
         },
-        error: (err)=>{
+        error: (err)=>{ 
           alert(err.error.message)
+          this.router.navigate(['/user/login']) 
         }
        })
     }

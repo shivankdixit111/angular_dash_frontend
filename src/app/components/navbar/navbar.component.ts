@@ -8,13 +8,13 @@ import { Subscription } from 'rxjs';
   imports: [RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
-})
+}) 
 
 
 export class NavbarComponent {
    isLogIn: boolean = false;
    private authSubscription!: Subscription;
-  
+   
 
    constructor(private authService: AuthService, private router: Router) {}
 
